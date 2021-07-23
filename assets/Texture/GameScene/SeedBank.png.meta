@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "ce7faced-ccb1-4fa4-98aa-0065cf2f424d",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 446,
+  "height": 87,
+  "platformSettings": {},
+  "subMetas": {
+    "SeedBank": {
+      "ver": "1.0.6",
+      "uuid": "b16fdba6-e6cf-44b0-9918-c767c6af653b",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "ce7faced-ccb1-4fa4-98aa-0065cf2f424d",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 446,
+      "height": 87,
+      "rawWidth": 446,
+      "rawHeight": 87,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
