@@ -5,4 +5,4 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 const SUN_DROP_ACTION = 1;
-export {SUN_DROP_ACTION}
+export { SUN_DROP_ACTION };

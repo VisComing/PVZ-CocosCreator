@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "fa070de2-39b3-4b35-85fd-68dd7d54d535",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 50,
+  "height": 70,
+  "platformSettings": {},
+  "subMetas": {
+    "WallNutCard": {
+      "ver": "1.0.6",
+      "uuid": "60afec50-fe00-4a79-a7e2-9d3be2995a2a",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "fa070de2-39b3-4b35-85fd-68dd7d54d535",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 50,
+      "height": 70,
+      "rawWidth": 50,
+      "rawHeight": 70,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
