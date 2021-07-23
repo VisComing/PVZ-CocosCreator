@@ -3,6 +3,22 @@
 The main namespace of Cocos2d-JS, all engine core classes, functions, properties and constants are defined in this namespace.
 !#zh
 Cocos 引擎的主要命名空间，引擎代码中所有的类，函数，属性和常量都在这个命名空间中定义。 */
+
+//cc.math是我自定义的，为的是防止vscode报错。2021/07/23
+declare namespace cc.math {
+	/**
+	Returns a floating-point random number between min (inclusive) and max (exclusive).
+	@param min min
+	@param max max 
+	*/
+	export function randomRange(min: number, max: number): number;	
+	/**
+	Returns a random integer between min (inclusive) and max (exclusive).
+	@param min min
+	@param max max 
+	*/
+	export function randomRangeInt(min: number, max: number): number;	
+}
 declare namespace cc {	
 	/** The current version of Cocos2d being used.<br/>
 	Please DO NOT remove this String, it is an important flag for bug tracking.<br/>
