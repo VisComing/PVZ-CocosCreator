@@ -83,6 +83,10 @@ export default class NewClass extends cc.Component {
       anim.play();
       //删除shadow节点
       this.myNode.children[0].destroy();
+      Utils.default.setMapPlace(e.getLocation(), true);
+      Utils.default.minusSunCoinNums(
+        this.myNode.getComponent("BaseInfo").money
+      );
     } else {
       cc.log("destory");
       this.myNode.destroy();

@@ -13,7 +13,7 @@ export default class NewClass extends cc.Component {
   @property(cc.Prefab)
   sunPrefab: cc.Prefab = null;
   @property(cc.Integer)
-  interval = 10;
+  interval: number = 10;
 
   // LIFE-CYCLE CALLBACKS:
 
@@ -31,8 +31,9 @@ export default class NewClass extends cc.Component {
       return;
     }
     sun.parent = this.node;
+    sun.setPosition(0, 0);
     cc.tween(sun)
-      .to(8, {}) //超过8秒还没有被点击，那就销毁
+      .to(sun.getComponent("SunProperty").sunDestroyTime, {}) //超过8秒还没有被点击，那就销毁
       .call(() => {
         sun.destroy();
       })
