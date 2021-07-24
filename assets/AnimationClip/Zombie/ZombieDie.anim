@@ -1,0 +1,79 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "ZombieDie",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 1.4285714285714286,
+  "sample": 7,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "83981896-ad14-46eb-ba94-969593631404"
+            }
+          },
+          {
+            "frame": 0.14285714285714285,
+            "value": {
+              "__uuid__": "75f632b2-1e1b-44eb-9ced-682c67c84203"
+            }
+          },
+          {
+            "frame": 0.2857142857142857,
+            "value": {
+              "__uuid__": "a75d9d30-c013-4764-ba18-bfe9bc0a1eca"
+            }
+          },
+          {
+            "frame": 0.42857142857142855,
+            "value": {
+              "__uuid__": "6ea8fde3-4596-4868-8325-9a5aaf0a21f6"
+            }
+          },
+          {
+            "frame": 0.5714285714285714,
+            "value": {
+              "__uuid__": "687752a8-2a6d-4e15-b883-293c9f0d1484"
+            }
+          },
+          {
+            "frame": 0.7142857142857143,
+            "value": {
+              "__uuid__": "3b4ac887-be44-46cb-8f10-32946bb83a1e"
+            }
+          },
+          {
+            "frame": 0.8571428571428571,
+            "value": {
+              "__uuid__": "9f820aee-8f2b-4ea4-acc0-32d2dd2842cc"
+            }
+          },
+          {
+            "frame": 1,
+            "value": {
+              "__uuid__": "ccf42bc1-f609-4342-ab7e-8b0fa36fddcb"
+            }
+          },
+          {
+            "frame": 1.1428571428571428,
+            "value": {
+              "__uuid__": "447a3eb6-579e-49c9-8fdd-cb91a9d28bc8"
+            }
+          },
+          {
+            "frame": 1.2857142857142858,
+            "value": {
+              "__uuid__": "631abf76-a8ce-41fb-8785-11da5000e8cc"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}

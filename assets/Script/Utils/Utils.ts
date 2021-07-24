@@ -12,20 +12,7 @@ export default class NewClass extends cc.Component {
   // onLoad () {}
 
   start() {}
-  static getSunCoinNums(): number {
-    return parseInt(
-      cc.find("Canvas/BgMap/SeedBank/SunCoinNums").getComponent(cc.Label).string
-    );
-  }
-  static minusSunCoinNums(num: number): void {
-    cc.find("Canvas/BgMap/SeedBank/SunCoinNums").getComponent(cc.Label).string =
-      (
-        parseInt(
-          cc.find("Canvas/BgMap/SeedBank/SunCoinNums").getComponent(cc.Label)
-            .string
-        ) - num
-      ).toString();
-  }
+
   //pos: 世界坐标，一般为e.getLocation()
   static canPlacePlant(pos: cc.Vec2): boolean {
     let x = pos.x;

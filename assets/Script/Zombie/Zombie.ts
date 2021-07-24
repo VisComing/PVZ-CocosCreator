@@ -12,25 +12,17 @@ export default class NewClass extends cc.Component {
 
     @property(cc.Label)
     label: cc.Label = null;
-    @property(cc.Integer)
-    coinNum = 25;
+
+    @property
+    text: string = 'hello';
 
     // LIFE-CYCLE CALLBACKS:
 
-    onLoad () {
-        this.node.on("sunCoinNumsPlus", this.onSunCoinNumsPlus, this);
-        if(this.label == null) {
-            cc.error("label is null!\n");
-        } 
-    }
+    // onLoad () {}
 
     start () {
 
     }
 
-    onSunCoinNumsPlus(e: cc.Event.EventCustom) {
-        e.stopPropagation();
-        this.label.string = (parseInt(this.label.string) + this.coinNum).toString();
-    }
     // update (dt) {}
 }

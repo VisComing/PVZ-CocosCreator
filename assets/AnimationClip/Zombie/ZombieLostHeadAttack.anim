@@ -1,0 +1,85 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "ZombieLostHeadAttack",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 1.5714285714285714,
+  "sample": 7,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "6ffb8815-ac7d-4d89-98fa-85290f6a12ca"
+            }
+          },
+          {
+            "frame": 0.14285714285714285,
+            "value": {
+              "__uuid__": "98178b72-0474-4bc1-a239-f90779bcbc07"
+            }
+          },
+          {
+            "frame": 0.2857142857142857,
+            "value": {
+              "__uuid__": "9f40af8f-2069-4d07-b17f-a8f76c4cc31b"
+            }
+          },
+          {
+            "frame": 0.42857142857142855,
+            "value": {
+              "__uuid__": "461d3c1c-7d51-4195-9418-0e2044341baa"
+            }
+          },
+          {
+            "frame": 0.5714285714285714,
+            "value": {
+              "__uuid__": "2e5f257c-bca5-4ac5-bdb7-edf89b368ba5"
+            }
+          },
+          {
+            "frame": 0.7142857142857143,
+            "value": {
+              "__uuid__": "1b7a32df-7260-4b81-8d37-bedce68b6c28"
+            }
+          },
+          {
+            "frame": 0.8571428571428571,
+            "value": {
+              "__uuid__": "98dd5bda-fbe2-43cf-b139-be02122e415a"
+            }
+          },
+          {
+            "frame": 1,
+            "value": {
+              "__uuid__": "973cc673-d509-4777-9e6b-7e066bec544d"
+            }
+          },
+          {
+            "frame": 1.1428571428571428,
+            "value": {
+              "__uuid__": "c8a7b85b-d28f-4bff-b99d-35e912baf254"
+            }
+          },
+          {
+            "frame": 1.2857142857142858,
+            "value": {
+              "__uuid__": "8d393b8f-1db5-4944-aebd-a39b3a212814"
+            }
+          },
+          {
+            "frame": 1.4285714285714286,
+            "value": {
+              "__uuid__": "afb10287-133d-4bfa-9f45-08f3529e9b48"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}

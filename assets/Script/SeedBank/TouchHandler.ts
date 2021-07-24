@@ -6,7 +6,7 @@
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 import * as Utils from "../Utils/Utils";
 const { ccclass, property } = cc._decorator;
-
+import Global from "../Global";
 @ccclass
 export default class NewClass extends cc.Component {
   @property(cc.Prefab)
@@ -25,7 +25,8 @@ export default class NewClass extends cc.Component {
   }
 
   onTouchStart(e: cc.Event.EventTouch) {
-    let sunCoinNums = Utils.default.getSunCoinNums();
+    let sunCoinNums = Global.getSunCoinNumsTS().getSunCoinNums();
+
     cc.log(sunCoinNums);
 
     this.myNode = cc.instantiate(this.scriptPrefab);
@@ -88,7 +89,7 @@ export default class NewClass extends cc.Component {
       this.myNode.getChildByName("Shadow").active = true;
 
       Utils.default.setMapPlace(e.getLocation(), true);
-      Utils.default.minusSunCoinNums(
+      Global.getSunCoinNumsTS().sunCoinNumsMinus(
         this.myNode.getComponent("BaseInfo").money
       );
     } else {
