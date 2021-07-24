@@ -53,15 +53,14 @@ export default class NewClass extends cc.Component {
       this.myNode.parent.convertToNodeSpaceAR(e.getLocation())
     );
     if (Utils.default.canPlacePlant(e.getLocation())) {
-      cc.log("can planeefa");
       const pos: cc.Vec2 = Utils.default.getPlantRightPlace(
         this.myNode.parent.convertToWorldSpaceAR(this.myNode.getPosition())
       );
-      this.myNode.children[0].setPosition(
-        this.myNode.convertToNodeSpaceAR(pos)
-      );
+      this.myNode
+        .getChildByName("PlantShadow")
+        .setPosition(this.myNode.convertToNodeSpaceAR(pos));
     } else {
-      this.myNode.children[0].setPosition(0, 0);
+      this.myNode.getChildByName("PlantShadow").setPosition(0, 0);
     }
   }
 
@@ -78,11 +77,16 @@ export default class NewClass extends cc.Component {
           )
         )
       );
-      let anim = this.myNode.getComponent(cc.Animation);
+      let anim = this.myNode
+        .getChildByName(this.myNode.name)
+        .getComponent(cc.Animation);
       //会播放默认动画
       anim.play();
-      //删除shadow节点
-      this.myNode.children[0].destroy();
+      //设置plantshadow节点不可用
+      this.myNode.getChildByName("PlantShadow").active = false;
+      //设置shadow可用
+      this.myNode.getChildByName("Shadow").active = true;
+
       Utils.default.setMapPlace(e.getLocation(), true);
       Utils.default.minusSunCoinNums(
         this.myNode.getComponent("BaseInfo").money

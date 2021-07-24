@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "SunFlower",
+    "_name": "PotatoMine",
     "_objFlags": 0,
     "_parent": null,
     "_children": [
@@ -61,8 +61,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        211.189,
-        146.208,
+        0,
+        0,
         0,
         0,
         0,
@@ -126,7 +126,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        -30,
+        -20,
         0,
         0,
         0,
@@ -188,9 +188,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "737ca301-4ecc-420d-8828-52868d27f252"
+      "__uuid__": "604424d7-8185-4fae-b61d-d71ab6c9a99b"
     },
-    "fileId": "3bHMGjjCNFkI4baVy4cLmc",
+    "fileId": "a4J5qjhqlN1ahpoMf4+X1t",
     "sync": false
   },
   {
@@ -220,8 +220,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 63,
-      "height": 72
+      "width": 75,
+      "height": 53
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -273,7 +273,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "f4d0ff69-13fb-40b9-b387-7566e228fe1d"
+      "__uuid__": "6b2bd798-8e66-4e1d-a59c-f154d6277b6d"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -287,7 +287,7 @@
     "_fillRange": 0,
     "_isTrimmedMode": true,
     "_atlas": {
-      "__uuid__": "b45aca18-5eb2-4d6d-80dc-8f0107000d93"
+      "__uuid__": "977124fb-9db8-4c52-adf0-414a7e9387d5"
     },
     "_id": ""
   },
@@ -297,14 +297,14 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "737ca301-4ecc-420d-8828-52868d27f252"
+      "__uuid__": "604424d7-8185-4fae-b61d-d71ab6c9a99b"
     },
-    "fileId": "b0Vvt94HtPtrw4CScU3MhU",
+    "fileId": "79lFZboX5Da5rUxZ3lyfXk",
     "sync": false
   },
   {
     "__type__": "cc.Node",
-    "_name": "SunFlower",
+    "_name": "PotatoMine",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -332,8 +332,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 73,
-      "height": 74
+      "width": 75,
+      "height": 55
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -385,7 +385,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "f4d0ff69-13fb-40b9-b387-7566e228fe1d"
+      "__uuid__": "6b2bd798-8e66-4e1d-a59c-f154d6277b6d"
     },
     "_type": 0,
     "_sizeMode": 2,
@@ -399,7 +399,7 @@
     "_fillRange": 0,
     "_isTrimmedMode": false,
     "_atlas": {
-      "__uuid__": "b45aca18-5eb2-4d6d-80dc-8f0107000d93"
+      "__uuid__": "977124fb-9db8-4c52-adf0-414a7e9387d5"
     },
     "_id": ""
   },
@@ -412,11 +412,14 @@
     },
     "_enabled": true,
     "_defaultClip": {
-      "__uuid__": "7973a38b-9a38-47d3-8571-5b966ef156f1"
+      "__uuid__": "e5a2d1f4-ac00-4b18-97fa-98da5f0f4b47"
     },
     "_clips": [
       {
-        "__uuid__": "7973a38b-9a38-47d3-8571-5b966ef156f1"
+        "__uuid__": "e5a2d1f4-ac00-4b18-97fa-98da5f0f4b47"
+      },
+      {
+        "__uuid__": "d9adfacc-bb45-43ae-a5c2-501b398aa9cf"
       }
     ],
     "playOnLoad": false,
@@ -428,9 +431,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "737ca301-4ecc-420d-8828-52868d27f252"
+      "__uuid__": "604424d7-8185-4fae-b61d-d71ab6c9a99b"
     },
-    "fileId": "11O2CW9JREioBYPYzrIQ0Q",
+    "fileId": "faGVsevjpCyYVMA0l2mPjn",
     "sync": false
   },
   {
@@ -444,24 +447,21 @@
     "HP": 1000,
     "defence": 10,
     "attack": 0,
-    "money": 50,
+    "money": 25,
     "shadow": {
       "__id__": 5
     },
     "_id": ""
   },
   {
-    "__type__": "131a6J3tIdGyIZrmWUnUrEE",
+    "__type__": "f9498vKvnBEDpccehKp3NVt",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 1
     },
     "_enabled": true,
-    "sunPrefab": {
-      "__uuid__": "442a17b1-f649-48d6-a504-4eb7607c3583"
-    },
-    "interval": 10,
+    "growTime": 10,
     "_id": ""
   },
   {
@@ -470,7 +470,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "737ca301-4ecc-420d-8828-52868d27f252"
+      "__uuid__": "604424d7-8185-4fae-b61d-d71ab6c9a99b"
     },
     "fileId": "",
     "sync": false

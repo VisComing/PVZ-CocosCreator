@@ -1,0 +1,67 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "PotatoMine",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 1.1428571428571428,
+  "sample": 7,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "6b2bd798-8e66-4e1d-a59c-f154d6277b6d"
+            }
+          },
+          {
+            "frame": 0.14285714285714285,
+            "value": {
+              "__uuid__": "fcad96dc-a4fd-4ad5-88fc-5c5f3b4b28de"
+            }
+          },
+          {
+            "frame": 0.2857142857142857,
+            "value": {
+              "__uuid__": "9a06bda5-77e6-476d-8270-192e5f7aa5b4"
+            }
+          },
+          {
+            "frame": 0.42857142857142855,
+            "value": {
+              "__uuid__": "aa895fe0-b646-4795-b73c-323d74fab2bd"
+            }
+          },
+          {
+            "frame": 0.5714285714285714,
+            "value": {
+              "__uuid__": "baf5f3a6-1c63-4395-a5f8-186c720789e5"
+            }
+          },
+          {
+            "frame": 0.7142857142857143,
+            "value": {
+              "__uuid__": "7113b850-0ea6-4b2b-b5ba-e25b7e058497"
+            }
+          },
+          {
+            "frame": 0.8571428571428571,
+            "value": {
+              "__uuid__": "00e908b1-8446-4e66-ab37-c6d866dc4aa3"
+            }
+          },
+          {
+            "frame": 1,
+            "value": {
+              "__uuid__": "c0f73a21-9289-4c87-8de5-26cb9da5fbcd"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}
