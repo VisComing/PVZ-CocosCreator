@@ -9,21 +9,20 @@ const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class NewClass extends cc.Component {
-  @property(cc.Integer)
-  HP = 1000;
-  @property(cc.Integer)
-  defence = 10;
-  @property(cc.Integer)
-  attack = 0;
-  @property(cc.Integer)
-  money = 50;
-  @property(cc.Node)
-  shadow = null;
+  mapArray: Array<Array<boolean>> = new Array(9);
+
   // LIFE-CYCLE CALLBACKS:
 
   // onLoad () {}
 
-  start() {}
+  start() {
+    for (let i = 0; i < this.mapArray.length; i++) {
+      this.mapArray[i] = new Array(5);
+    }
+    for (let i = 0; i < 9; i++)
+      for (let j = 0; j < 5; j++) this.mapArray[i][j] = false;
+    cc.log(this.mapArray[3][4]);
+  }
 
   // update (dt) {}
 }
