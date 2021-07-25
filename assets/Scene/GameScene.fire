@@ -504,7 +504,6 @@
       "__id__": 7
     },
     "_enabled": true,
-    "coinNum": 25,
     "_id": "2a77AkRWJHmIwrinwaxzWj"
   },
   {
@@ -1065,7 +1064,7 @@
       "__id__": 5
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 25
@@ -1202,6 +1201,7 @@
     },
     "_enabled": true,
     "sunDestroyTime": 8,
+    "sunWorth": 25,
     "_id": "68o3PCwSxKEoVrcj32yKzr"
   },
   {
@@ -3213,7 +3213,6 @@
       "__id__": 5
     },
     "_enabled": true,
-    "coinNum": 25,
     "_id": "54muBrILJK8rEtbf31B3Hf"
   },
   {
