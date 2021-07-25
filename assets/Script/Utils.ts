@@ -117,5 +117,8 @@ export default class NewClass extends cc.Component {
     else if (x < 1000) column = 8;
     return column;
   }
+  static caculMinusHP(attack: number, defence: number): number {
+    return attack - defence;
+  }
   // update (dt) {}
 }

@@ -4,7 +4,7 @@
 //  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
-import Utils from "../Utils/Utils";
+import Utils from "../Utils";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -17,15 +17,10 @@ export default class NewClass extends cc.Component {
   attack = 0;
   @property(cc.Integer)
   money = 50;
-  @property(cc.Node)
-  shadow = null;
   @property(cc.Integer)
   speed = 10;
-  @property(cc.Integer)
   row = 0;
-  @property(cc.Integer)
   column = 0;
-  @property(cc.Vec2)
   pos: cc.Vec2 = cc.v2(0, 0);
 
   // LIFE-CYCLE CALLBACKS:

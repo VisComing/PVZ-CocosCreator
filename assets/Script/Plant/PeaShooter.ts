@@ -21,7 +21,11 @@ export default class NewClass extends cc.Component {
   start() {}
 
   onTimer() {
-    if (true) {
+    if (
+      Global.getZombieManagerTS().hasZombieInFrontOfPlant(
+        this.node.convertToWorldSpaceAR(this.node.parent.getPosition())
+      )
+    ) {
       let pea = cc.instantiate(this.bulletPea);
       pea.parent = this.node.parent;
       pea.position = this.node.position;

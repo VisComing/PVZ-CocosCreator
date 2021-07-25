@@ -4,7 +4,7 @@
 //  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
-import Utils from "../Utils/Utils";
+import Utils from "../Utils";
 const { ccclass, property } = cc._decorator;
 import Global from "../Global";
 @ccclass

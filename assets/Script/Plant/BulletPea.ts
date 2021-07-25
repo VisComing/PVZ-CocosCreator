@@ -4,7 +4,7 @@
 //  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
-
+import Global from "../Global";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -28,5 +28,19 @@ export default class NewClass extends cc.Component {
 
   start() {}
 
-  // update (dt) {}
+  update(dt) {
+    //判断是否与僵尸碰撞
+    if (
+      Global.getZombieManagerTS().hasZombieInBoundingBox(
+        this.node.getBoundingBoxToWorld()
+      )
+    ) {
+      //碰撞
+      Global.getZombieManagerTS().attackZombieInBounding(
+        this.node.getBoundingBoxToWorld(),
+        this.attack
+      );
+      this.node.destroy();
+    }
+  }
 }
