@@ -30,8 +30,8 @@ export default class NewClass extends cc.Component {
       cc.error("sun is null!\n");
       return;
     }
-    sun.parent = this.node;
-    sun.setPosition(0, 0);
+    sun.parent = this.node.parent;
+    sun.setPosition(this.node.getPosition());
     cc.tween(sun)
       .to(sun.getComponent("SunProperty").sunDestroyTime, {}) //超过8秒还没有被点击，那就销毁
       .call(() => {

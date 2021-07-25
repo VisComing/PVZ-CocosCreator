@@ -11,6 +11,8 @@ const { ccclass, property } = cc._decorator;
 export default class NewClass extends cc.Component {
   @property(cc.Integer)
   sunDestroyTime: number = 8;
+  @property(cc.Integer)
+  sunWorth: number = 25;
   // LIFE-CYCLE CALLBACKS:
 
   // onLoad () {}

@@ -6,6 +6,7 @@
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 import * as ConstProperty from "../ConstProperty";
 const { ccclass, property } = cc._decorator;
+import Global from "../Global";
 
 @ccclass
 export default class NewClass extends cc.Component {
@@ -33,7 +34,10 @@ export default class NewClass extends cc.Component {
   }
 
   destoryNode() {
-    this.node.dispatchEvent(new cc.Event.EventCustom("sunCoinNumsPlus", true));
+    Global.getSunCoinNumsTS().sunCoinNumsPlus(
+      this.node.getComponent("SunProperty").sunWorth
+    );
+    cc.log(this.node.getComponent("SunProperty").sunWorth);
     this.node.destroy();
   }
   // update (dt) {}

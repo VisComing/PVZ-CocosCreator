@@ -9,9 +9,6 @@ const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class SunCoinNums extends cc.Component {
-  @property(cc.Integer)
-  coinNum = 0;
-
   // LIFE-CYCLE CALLBACKS:
 
   // onLoad () {
