@@ -10,13 +10,14 @@ import Global from "../Global";
 @ccclass
 export default class NewClass extends cc.Component {
   @property(cc.Prefab)
-  scriptPrefab: cc.Prefab = null;
+  staticPrefab: cc.Prefab = null;
+  @property(cc.Integer)
+  sunCoins: number = 0;
 
-  myNode: cc.Node = null;
   // LIFE-CYCLE CALLBACKS:
-
+  sunCoinNums: number = 0;
   // onLoad () {}
-
+  myNode: cc.Node = null;
   start() {
     this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
     this.node.on(cc.Node.EventType.TOUCH_MOVE, this.onTouchMove, this);
@@ -25,31 +26,26 @@ export default class NewClass extends cc.Component {
   }
 
   onTouchStart(e: cc.Event.EventTouch) {
-    let sunCoinNums = Global.getSunCoinNumsTS().getSunCoinNums();
+    this.sunCoinNums = Global.getSunCoinNumsTS().getSunCoinNums();
 
-    cc.log(sunCoinNums);
+    cc.log(this.sunCoinNums);
 
-    this.myNode = cc.instantiate(this.scriptPrefab);
-    if (this.myNode == null) {
-      cc.error("myNode is null!\n");
-      return;
-    }
-    cc.log(this.myNode.getComponent("BaseInfo").money);
-    if (this.myNode.getComponent("BaseInfo").money > sunCoinNums) {
+    if (this.sunCoins > this.sunCoinNums) {
       //金币不足，无法创建
       cc.log("coin not enough");
-      this.myNode.destroy();
       return;
+    } else {
+      this.myNode = cc.instantiate(this.staticPrefab);
+      this.myNode.parent = this.node.parent.parent;
+      this.myNode.setPosition(
+        this.myNode.parent.convertToNodeSpaceAR(e.getLocation())
+      );
     }
-    this.myNode.parent = this.node.getParent().getParent();
-    this.myNode.setPosition(
-      this.myNode.parent.convertToNodeSpaceAR(e.getLocation())
-    );
   }
 
   onTouchMove(e: cc.Event.EventTouch) {
+    if (!this.myNode) return;
     cc.log("move");
-    if (!this.myNode || !this.myNode.isValid || !this.myNode.parent) return;
     this.myNode.setPosition(
       this.myNode.parent.convertToNodeSpaceAR(e.getLocation())
     );
@@ -58,15 +54,15 @@ export default class NewClass extends cc.Component {
         this.myNode.parent.convertToWorldSpaceAR(this.myNode.getPosition())
       );
       this.myNode
-        .getChildByName("PlantShadow")
+        .getChildByName("Shadow")
         .setPosition(this.myNode.convertToNodeSpaceAR(pos));
     } else {
-      this.myNode.getChildByName("PlantShadow").setPosition(0, 0);
+      this.myNode.getChildByName("Shadow").setPosition(0, 0);
     }
   }
 
   onTouchEnd(e: cc.Event.EventTouch) {
-    if (!this.myNode || !this.myNode.isValid || !this.myNode.parent) return;
+    if (!this.myNode) return;
     //判断位置是否合法
     if (Utils.canPlacePlant(e.getLocation())) {
       cc.log(this.myNode.name);

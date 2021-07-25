@@ -4,34 +4,30 @@
 //  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
-import * as Utils from "../Utils/Utils";
+import Global from "../Global";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class NewClass extends cc.Component {
-  @property(cc.Integer)
-  HP = 1000;
-  @property(cc.Integer)
-  defence = 10;
-  @property(cc.Integer)
-  attack = 0;
-  @property(cc.Integer)
-  money = 50;
-  row = 0;
-  column = 0;
   // LIFE-CYCLE CALLBACKS:
-
-  // onLoad () {}
+  @property(cc.Prefab)
+  bulletPea: cc.Prefab = null;
+  @property(cc.Integer)
+  interval: number = 1;
+  onLoad() {
+    this.schedule(this.onTimer, this.interval);
+  }
 
   start() {}
 
-  update(dt) {
-    if (this.HP < 0) {
-      Utils.default.setMapPlace(
-        this.node.convertToWorldSpaceAR(this.node.getPosition()),
-        false
-      );
-      this.node.destroy();
+  onTimer() {
+    if (true) {
+      let pea = cc.instantiate(this.bulletPea);
+      pea.parent = this.node.parent;
+      pea.position = this.node.position;
+      //对准枪口
+      pea.setPosition(pea.position.x + 10, pea.position.y + 20);
+      cc.log("peapea");
     }
   }
 }

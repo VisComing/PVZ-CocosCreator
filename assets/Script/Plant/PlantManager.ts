@@ -18,7 +18,7 @@ export default class NewClass extends cc.Component {
   PotatoMine: cc.Prefab = null;
   @property(cc.Prefab)
   PeaShooter: cc.Prefab = null;
-  private plantMap: Array<Array<object>> = new Array(5);
+  private plantMap: Array<Array<cc.Node>> = new Array(5);
   // LIFE-CYCLE CALLBACKS:
 
   // onLoad () {}
@@ -33,6 +33,7 @@ export default class NewClass extends cc.Component {
       }
     }
   }
+
   newPlant(plantName: string, location: cc.Vec2): void {
     let myNode: cc.Node = null;
     if (plantName == "SunFlower") {
@@ -41,6 +42,8 @@ export default class NewClass extends cc.Component {
       myNode = cc.instantiate(this.WallNut);
     } else if (plantName == "PotatoMine") {
       myNode = cc.instantiate(this.PotatoMine);
+    } else if (plantName == "PeaShooter") {
+      myNode = cc.instantiate(this.PeaShooter);
     }
     if (!myNode) return;
     myNode.parent = this.node;
@@ -50,8 +53,6 @@ export default class NewClass extends cc.Component {
     let anim = myNode.getChildByName(myNode.name).getComponent(cc.Animation);
     //会播放默认动画
     anim.play();
-    //设置plantshadow节点不可用
-    myNode.getChildByName("PlantShadow").active = false;
     //设置shadow可用
     myNode.getChildByName("Shadow").active = true;
 
@@ -64,15 +65,61 @@ export default class NewClass extends cc.Component {
     Global.getSunCoinNumsTS().sunCoinNumsMinus(
       myNode.getComponent("BaseInfo").money
     );
+    //加入植物数组
+    this.plantMap[Utils.getRow(location)][Utils.getColumn(location)] = myNode;
   }
-  removePlant(row: number, column: number): void {}
+
+  removePlant(row: number, column: number): void {
+    let rePlant = this.plantMap[row][column];
+    rePlant.destroy();
+    this.plantMap[row][column] = null;
+  }
+
   hasPlantRowAndColumn(row: number, column: number): boolean {
+    for (let i = 0; i < this.plantMap.length; i++) {
+      for (let j = 0; j < this.plantMap[i].length; j++) {
+        if (
+          this.plantMap[i][j].getComponent("BaseInfo").row == row &&
+          this.plantMap[i][j].getComponent("BaseInfo").column == column
+        ) {
+          return true;
+        }
+      }
+    }
     return false;
   }
+
+  /**
+   * 该行是否有植物
+   * @param row 行号
+   * @returns boolean
+   */
   hasPlantRow(row: number): boolean {
+    for (let i = 0; i < this.plantMap.length; i++) {
+      for (let j = 0; j < this.plantMap[i].length; j++) {
+        if (this.plantMap[i][j].getComponent("BaseInfo").row == row) {
+          return true;
+        }
+      }
+    }
     return false;
   }
-  hasPlantInPosition(pos: cc.Vec2): boolean {
+
+  /**
+   * 僵尸是否与植物相交
+   * @param rect 僵尸的boundingbox世界坐标
+   * @returns boolean
+   */
+  hasPlantInBoundingBox(rect: cc.Rect): boolean {
+    let zombieRow = Utils.getRow(
+      cc.v2((rect.xMax + rect.xMin) / 2, (rect.yMax + rect.yMin) / 2)
+    );
+    for (let i = 0; i < this.plantMap[0].length; i++) {
+      let rectPlant = this.plantMap[zombieRow][i].getBoundingBoxToWorld();
+      if (rectPlant.xMax > rect.xMin && rectPlant.xMin < rect.xMin) {
+        return true;
+      }
+    }
     return false;
   }
   // update (dt) {}

@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "PotatoMine",
+    "_name": "PeaShooter",
     "_objFlags": 0,
     "_parent": null,
     "_children": [
@@ -58,8 +58,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        205.47,
-        56.551,
+        0,
+        0,
         0,
         0,
         0,
@@ -123,7 +123,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        -20,
+        -30,
         0,
         0,
         0,
@@ -185,14 +185,14 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "10d1e5db-41d3-4999-8bfc-4bb4a2cd946d"
+      "__uuid__": "16762224-2af1-47d6-9f8d-1be3d57fb01a"
     },
-    "fileId": "96HLwiiMFDY65+FsoepZ8+",
+    "fileId": "9c9/VSKAhFjKMKyo0Q1xZC",
     "sync": false
   },
   {
     "__type__": "cc.Node",
-    "_name": "PotatoMine",
+    "_name": "PeaShooter",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -220,8 +220,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 75,
-      "height": 55
+      "width": 71,
+      "height": 71
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -273,7 +273,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "6b2bd798-8e66-4e1d-a59c-f154d6277b6d"
+      "__uuid__": "58fcc253-e32d-438f-83b1-1f8e026a7982"
     },
     "_type": 0,
     "_sizeMode": 2,
@@ -287,7 +287,7 @@
     "_fillRange": 0,
     "_isTrimmedMode": false,
     "_atlas": {
-      "__uuid__": "977124fb-9db8-4c52-adf0-414a7e9387d5"
+      "__uuid__": "79eed5be-fd3c-4b9a-bef8-0c4da52a1817"
     },
     "_id": ""
   },
@@ -300,14 +300,11 @@
     },
     "_enabled": true,
     "_defaultClip": {
-      "__uuid__": "e5a2d1f4-ac00-4b18-97fa-98da5f0f4b47"
+      "__uuid__": "c3fe2707-b949-40fd-839f-bf791a3bcc0d"
     },
     "_clips": [
       {
-        "__uuid__": "e5a2d1f4-ac00-4b18-97fa-98da5f0f4b47"
-      },
-      {
-        "__uuid__": "d9adfacc-bb45-43ae-a5c2-501b398aa9cf"
+        "__uuid__": "c3fe2707-b949-40fd-839f-bf791a3bcc0d"
       }
     ],
     "playOnLoad": false,
@@ -319,9 +316,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "10d1e5db-41d3-4999-8bfc-4bb4a2cd946d"
+      "__uuid__": "16762224-2af1-47d6-9f8d-1be3d57fb01a"
     },
-    "fileId": "9dXPt+GDRHMY0xBWQNE21S",
+    "fileId": "52Vls434FOHrs5Sv4TiDRW",
     "sync": false
   },
   {
@@ -335,19 +332,22 @@
     "HP": 1000,
     "defence": 10,
     "attack": 0,
-    "money": 25,
+    "money": 100,
     "shadow": null,
     "_id": ""
   },
   {
-    "__type__": "f9498vKvnBEDpccehKp3NVt",
+    "__type__": "ae7ebNv+rVFvr86X7PXNz53",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 1
     },
     "_enabled": true,
-    "growTime": 10,
+    "bulletPea": {
+      "__uuid__": "0ad3b07a-97e0-4406-b65f-1e09347ac957"
+    },
+    "interval": 1,
     "_id": ""
   },
   {
@@ -356,7 +356,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "10d1e5db-41d3-4999-8bfc-4bb4a2cd946d"
+      "__uuid__": "16762224-2af1-47d6-9f8d-1be3d57fb01a"
     },
     "fileId": "",
     "sync": false

@@ -4,34 +4,29 @@
 //  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
-import * as Utils from "../Utils/Utils";
+
 const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class NewClass extends cc.Component {
   @property(cc.Integer)
-  HP = 1000;
+  attack: number = 20;
   @property(cc.Integer)
-  defence = 10;
-  @property(cc.Integer)
-  attack = 0;
-  @property(cc.Integer)
-  money = 50;
-  row = 0;
-  column = 0;
+  speed: number = 1000;
   // LIFE-CYCLE CALLBACKS:
-
-  // onLoad () {}
+  private distance = 2000;
+  onLoad() {
+    cc.tween(this.node)
+      .by(this.distance / this.speed, {
+        position: cc.v3(this.distance, this.node.y),
+      })
+      .call(() => {
+        this.node.destroy();
+      })
+      .start();
+  }
 
   start() {}
 
-  update(dt) {
-    if (this.HP < 0) {
-      Utils.default.setMapPlace(
-        this.node.convertToWorldSpaceAR(this.node.getPosition()),
-        false
-      );
-      this.node.destroy();
-    }
-  }
+  // update (dt) {}
 }
