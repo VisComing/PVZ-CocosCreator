@@ -4,7 +4,7 @@
 //  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
-import * as Utils from "../Utils/Utils";
+import Utils from "../Utils/Utils";
 const { ccclass, property } = cc._decorator;
 import Global from "../Global";
 @ccclass
@@ -53,8 +53,8 @@ export default class NewClass extends cc.Component {
     this.myNode.setPosition(
       this.myNode.parent.convertToNodeSpaceAR(e.getLocation())
     );
-    if (Utils.default.canPlacePlant(e.getLocation())) {
-      const pos: cc.Vec2 = Utils.default.getPlantRightPlace(
+    if (Utils.canPlacePlant(e.getLocation())) {
+      const pos: cc.Vec2 = Utils.getPlantRightPlace(
         this.myNode.parent.convertToWorldSpaceAR(this.myNode.getPosition())
       );
       this.myNode
@@ -68,34 +68,11 @@ export default class NewClass extends cc.Component {
   onTouchEnd(e: cc.Event.EventTouch) {
     if (!this.myNode || !this.myNode.isValid || !this.myNode.parent) return;
     //判断位置是否合法
-    if (Utils.default.canPlacePlant(e.getLocation())) {
-      cc.log("can place");
-
-      this.myNode.setPosition(
-        this.myNode.parent.convertToNodeSpaceAR(
-          Utils.default.getPlantRightPlace(
-            this.myNode.parent.convertToWorldSpaceAR(this.myNode.getPosition())
-          )
-        )
-      );
-      let anim = this.myNode
-        .getChildByName(this.myNode.name)
-        .getComponent(cc.Animation);
-      //会播放默认动画
-      anim.play();
-      //设置plantshadow节点不可用
-      this.myNode.getChildByName("PlantShadow").active = false;
-      //设置shadow可用
-      this.myNode.getChildByName("Shadow").active = true;
-
-      Utils.default.setMapPlace(e.getLocation(), true);
-      Global.getSunCoinNumsTS().sunCoinNumsMinus(
-        this.myNode.getComponent("BaseInfo").money
-      );
-    } else {
-      cc.log("destory");
-      this.myNode.destroy();
+    if (Utils.canPlacePlant(e.getLocation())) {
+      cc.log(this.myNode.name);
+      Global.getPlantManagerTS().newPlant(this.myNode.name, e.getLocation());
     }
+    this.myNode.destroy();
   }
 
   onTouchCancle(e: cc.Event.EventTouch) {

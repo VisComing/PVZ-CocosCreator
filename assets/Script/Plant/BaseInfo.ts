@@ -19,6 +19,10 @@ export default class NewClass extends cc.Component {
   money = 50;
   @property(cc.Node)
   shadow = null;
+  @property(cc.Integer)
+  row = 0;
+  @property(cc.Integer)
+  column = 0;
   // LIFE-CYCLE CALLBACKS:
 
   // onLoad () {}

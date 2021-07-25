@@ -93,5 +93,29 @@ export default class NewClass extends cc.Component {
       arr[Math.floor((x - 200) / 90)][Math.floor(y / 100)] = placed;
     }
   }
+  static getRow(location: cc.Vec2): number {
+    let row: number = -1;
+    const y = location.y;
+    if (y > 30 && y < 129) row = 0;
+    else if (y < 219) row = 1;
+    else if (y < 320) row = 2;
+    else if (y < 419) row = 3;
+    else if (y < 510) row = 4;
+    return row;
+  }
+  static getColumn(location: cc.Vec2): number {
+    let column: number = -1;
+    const x = location.x;
+    if (x > 236 && x < 333) column = 0;
+    else if (x < 405) column = 1;
+    else if (x < 493) column = 2;
+    else if (x < 574) column = 3;
+    else if (x < 652) column = 4;
+    else if (x < 734) column = 5;
+    else if (x < 815) column = 6;
+    else if (x < 896) column = 7;
+    else if (x < 1000) column = 8;
+    return column;
+  }
   // update (dt) {}
 }

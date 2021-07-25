@@ -7,6 +7,7 @@
 
 const { ccclass, property } = cc._decorator;
 import SunCoinNums from "./SunCoinNums/SunCoinNums";
+import PlantManager from "./Plant/PlantManager";
 @ccclass
 export default class Global extends cc.Component {
   //该类用于管理需要在其他ts文件中调用的ts文件
@@ -19,6 +20,9 @@ export default class Global extends cc.Component {
     return cc
       .find("Canvas/BgMap/SeedBank/SunCoinNums")
       .getComponent("SunCoinNums");
+  }
+  static getPlantManagerTS(): PlantManager {
+    return cc.find("Canvas/BgMap").getComponent("PlantManager");
   }
   // update (dt) {}
 }
