@@ -185,9 +185,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "6f1795c6-da92-4b0e-abb8-e5ea28ada334"
+      "__uuid__": "f2fbd212-ffd8-4322-b8aa-cbbe4b7a6a76"
     },
-    "fileId": "16ocwY22VOa5PNKSccDk5y",
+    "fileId": "a39l7LGx9P1qHaetN+k0+k",
     "sync": false
   },
   {
@@ -331,10 +331,20 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "6f1795c6-da92-4b0e-abb8-e5ea28ada334"
+      "__uuid__": "f2fbd212-ffd8-4322-b8aa-cbbe4b7a6a76"
     },
-    "fileId": "87B7fPDVlOwbNCZkhBqE7p",
+    "fileId": "02+Zo0D7hH6LyfrIr/reEg",
     "sync": false
+  },
+  {
+    "__type__": "26ff4urITpMTqetLrQkoYo4",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "_id": ""
   },
   {
     "__type__": "e5b10L5pYdBfrfWCpdIQrYj",
@@ -346,19 +356,8 @@
     "_enabled": true,
     "HP": 1000,
     "defence": 10,
-    "attack": 0,
+    "attack": 12.5,
     "money": 50,
-    "speed": 10,
-    "_id": ""
-  },
-  {
-    "__type__": "26ff4urITpMTqetLrQkoYo4",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
     "speed": 10,
     "_id": ""
   },
@@ -368,7 +367,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "6f1795c6-da92-4b0e-abb8-e5ea28ada334"
+      "__uuid__": "f2fbd212-ffd8-4322-b8aa-cbbe4b7a6a76"
     },
     "fileId": "",
     "sync": false

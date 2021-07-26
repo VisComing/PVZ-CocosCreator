@@ -347,11 +347,10 @@
       "__id__": 1
     },
     "_enabled": true,
-    "HP": 7000,
+    "HP": 6000,
     "defence": 10,
     "attack": 0,
     "money": 50,
-    "shadow": null,
     "_id": ""
   },
   {

@@ -4,7 +4,7 @@
 //  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
-
+import Global from "../Global";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -32,5 +32,20 @@ export default class NewClass extends cc.Component {
       this.unschedule(this.onTimer);
     }
   }
-  // update (dt) {}
+  update(dt) {
+    if (
+      this.nowTime >= this.growTime &&
+      Global.getZombieManagerTS().hasZombieInBoundingBox(
+        this.node.getBoundingBoxToWorld()
+      )
+    ) {
+      //炸死僵尸
+      Global.getZombieManagerTS().zombieBoomDie(
+        Global.getZombieManagerTS().getBoundingZombie(
+          this.node.getBoundingBoxToWorld()
+        )
+      );
+      this.node.destroy();
+    }
+  }
 }

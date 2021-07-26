@@ -34,7 +34,7 @@ export default class NewClass extends cc.Component {
       else if (y < 320) y = 274;
       else if (y < 419) y = 375;
       else if (y < 510) y = 475;
-      if (arr[Math.floor((x - 200) / 90)][Math.floor(y / 100)] == false)
+      if (arr[Math.floor(y / 100)][Math.floor((x - 200) / 90)] == false)
         return true;
       else return false;
     }
@@ -62,7 +62,7 @@ export default class NewClass extends cc.Component {
       else if (y < 320) y = 274;
       else if (y < 419) y = 375;
       else if (y < 510) y = 475;
-      if (arr[Math.floor((x - 200) / 90)][Math.floor(y / 100)] == false)
+      if (arr[Math.floor(y / 100)][Math.floor((x - 200) / 90)] == false)
         return cc.v2(x, y);
       else return cc.v2(0, 0);
     }
@@ -71,6 +71,16 @@ export default class NewClass extends cc.Component {
   static canPlaceZombie(pos: cc.Vec2): boolean {
     return false;
   }
+
+  static setMapPlaceRowAndColumn(
+    row: number,
+    column: number,
+    placed: boolean
+  ): void {
+    let arr = cc.find("Canvas/BgMap").getComponent("MapProperty").mapArray;
+    arr[row][column] = placed;
+  }
+
   static setMapPlace(pos: cc.Vec2, placed: boolean): void {
     let x = pos.x;
     let y = pos.y;
@@ -90,7 +100,7 @@ export default class NewClass extends cc.Component {
       else if (y < 320) y = 274;
       else if (y < 419) y = 375;
       else if (y < 510) y = 475;
-      arr[Math.floor((x - 200) / 90)][Math.floor(y / 100)] = placed;
+      arr[Math.floor(y / 100)][Math.floor((x - 200) / 90)] = placed;
     }
   }
   static getRow(location: cc.Vec2): number {
@@ -118,6 +128,7 @@ export default class NewClass extends cc.Component {
     return column;
   }
   static caculMinusHP(attack: number, defence: number): number {
+    if (attack <= defence) return 0;
     return attack - defence;
   }
   // update (dt) {}

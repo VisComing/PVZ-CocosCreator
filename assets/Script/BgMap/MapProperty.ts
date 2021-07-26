@@ -9,7 +9,7 @@ const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class NewClass extends cc.Component {
-  mapArray: Array<Array<boolean>> = new Array(9);
+  mapArray: Array<Array<boolean>> = new Array(5);
 
   // LIFE-CYCLE CALLBACKS:
 
@@ -17,11 +17,10 @@ export default class NewClass extends cc.Component {
 
   start() {
     for (let i = 0; i < this.mapArray.length; i++) {
-      this.mapArray[i] = new Array(5);
+      this.mapArray[i] = new Array(9);
     }
-    for (let i = 0; i < 9; i++)
-      for (let j = 0; j < 5; j++) this.mapArray[i][j] = false;
-    cc.log(this.mapArray[3][4]);
+    for (let i = 0; i < 5; i++)
+      for (let j = 0; j < 9; j++) this.mapArray[i][j] = false;
   }
 
   // update (dt) {}

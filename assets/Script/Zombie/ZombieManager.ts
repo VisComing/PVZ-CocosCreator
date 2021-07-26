@@ -20,12 +20,31 @@ export default class NewClass extends cc.Component {
   }
 
   start() {}
+  zom: cc.Node = null;
   initZombie() {
-    let zom = cc.instantiate(this.Zombie);
-    zom.parent = this.node;
-    zom.position = cc.v3(300, -280);
-    this.zombieMap[0].push(zom);
+    cc.log("init zombie");
+    this.zom = cc.instantiate(this.Zombie);
+    this.zom.parent = this.node;
+    this.zom.setPosition(300, -200);
+    this.zombieMap[0].push(this.zom);
+    this.zom.getComponent("Zombie").zombieWalk();
   }
+  stopAllAction() {
+    this.zom.getComponent("Zombie").zombieStopWalk();
+  }
+  removeZombie(zombie: cc.Node): void {
+    for (let i = 0; i < this.zombieMap.length; i++) {
+      for (let j = 0; j < this.zombieMap[i].length; j++) {
+        if (this.zombieMap[i][j] == zombie) {
+          this.zombieMap[i].splice(j, 1);
+          zombie.destroy();
+          return;
+        }
+      }
+    }
+    cc.error("no zombie to remove!");
+  }
+
   /*该行是否有僵尸
    */
   hasZombieInRow(row: number): boolean {
@@ -49,14 +68,14 @@ export default class NewClass extends cc.Component {
     return false;
   }
 
-  //碰撞时攻击僵尸
-  attackZombieInBounding(rect: cc.Rect, attack: number): void {
+  //获取碰撞的僵尸
+  getBoundingZombie(rect: cc.Rect): cc.Node {
     if (this.hasZombieInBoundingBox(rect)) {
       let zombie: cc.Node = null;
       let plantRow = Utils.getRow(
         cc.v2((rect.xMax + rect.xMin) / 2, (rect.yMax + rect.yMin) / 2)
       );
-      for (let i = 0; i < this.zombieMap[0].length; i++) {
+      for (let i = 0; i < this.zombieMap[plantRow].length; i++) {
         let rectPlant = this.zombieMap[plantRow][i].getBoundingBoxToWorld();
         if (rectPlant.xMax > rect.xMin && rectPlant.xMin < rect.xMin) {
           zombie = this.zombieMap[plantRow][i];
@@ -65,14 +84,25 @@ export default class NewClass extends cc.Component {
       }
       if (!zombie) {
         cc.error("zombie is null!\n");
-      } else {
-        zombie.getComponent("ZombieBaseInfo").HP -= Utils.caculMinusHP(
-          attack,
-          zombie.getComponent("ZombieBaseInfo").defence
-        );
+        return null;
       }
+      return zombie;
+    }
+    return null;
+  }
+
+  //碰撞时攻击僵尸
+  attackZombieInBounding(rect: cc.Rect, attack: number): void {
+    let zombie = this.getBoundingZombie(rect);
+    zombie.getComponent("ZombieBaseInfo").HP -= Utils.caculMinusHP(
+      attack,
+      zombie.getComponent("ZombieBaseInfo").defence
+    );
+    if (zombie.getComponent("ZombieBaseInfo").HP <= 0) {
+      this.removeZombie(zombie);
     }
   }
+
   /*植物前方是否有僵尸
    */
   hasZombieInFrontOfPlant(location: cc.Vec2): boolean {
@@ -88,4 +118,17 @@ export default class NewClass extends cc.Component {
     return false;
   }
   // update (dt) {}
+
+  controlZombieState(): void {
+    for (let i = 0; i < this.zombieMap.length; i++) {
+      for (let j = 0; j < this.zombieMap[i].length; j++) {
+        let zombie = this.zombieMap[i][j];
+        if (!zombie || zombie.active) {
+          cc.error("zombie is null or is not active");
+        }
+      }
+    }
+  }
+  zombieBoomDie(zombie: cc.Node): void {}
+  zombieAteDie(zombie: cc.Node): void {}
 }

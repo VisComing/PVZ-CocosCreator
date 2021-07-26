@@ -60,7 +60,7 @@ export default class NewClass extends cc.Component {
 
     //设置植物的行列
     myNode.getComponent("BaseInfo").row = Utils.getRow(location);
-    myNode.getComponent("BaseInfo").row = Utils.getColumn(location);
+    myNode.getComponent("BaseInfo").column = Utils.getColumn(location);
 
     Global.getSunCoinNumsTS().sunCoinNumsMinus(
       myNode.getComponent("BaseInfo").money
@@ -69,9 +69,13 @@ export default class NewClass extends cc.Component {
     this.plantMap[Utils.getRow(location)][Utils.getColumn(location)] = myNode;
   }
 
-  removePlant(row: number, column: number): void {
+  private removePlant(row: number, column: number): void {
     let rePlant = this.plantMap[row][column];
+    if (rePlant == null) {
+      cc.error("plant to remove is null");
+    }
     rePlant.destroy();
+    Utils.setMapPlaceRowAndColumn(row, column, false);
     this.plantMap[row][column] = null;
   }
 
@@ -110,17 +114,58 @@ export default class NewClass extends cc.Component {
    * @param rect 僵尸的boundingbox世界坐标
    * @returns boolean
    */
-  hasPlantInBoundingBox(rect: cc.Rect): boolean {
-    let zombieRow = Utils.getRow(
-      cc.v2((rect.xMax + rect.xMin) / 2, (rect.yMax + rect.yMin) / 2)
-    );
-    for (let i = 0; i < this.plantMap[0].length; i++) {
+  hasPlantInBoundingBox(rect: cc.Rect, location: cc.Vec2): boolean {
+    let zombieRow = Utils.getRow(location);
+    for (let i = 0; i < this.plantMap[zombieRow].length; i++) {
+      if (!this.plantMap[zombieRow][i]) continue;
       let rectPlant = this.plantMap[zombieRow][i].getBoundingBoxToWorld();
       if (rectPlant.xMax > rect.xMin && rectPlant.xMin < rect.xMin) {
         return true;
       }
     }
     return false;
+  }
+
+  getBoundingPlant(rect: cc.Rect, location: cc.Vec2): cc.Node {
+    if (this.hasPlantInBoundingBox(rect, location)) {
+      let plant: cc.Node = null;
+      let zombieRow = Utils.getRow(
+        cc.v2((rect.xMax + rect.xMin) / 2, (rect.yMax + rect.yMin) / 2)
+      );
+      for (let i = 0; i < this.plantMap[zombieRow].length; i++) {
+        if (!this.plantMap[zombieRow][i]) continue;
+        let rectPlant = this.plantMap[zombieRow][i].getBoundingBoxToWorld();
+        if (rectPlant.xMax > rect.xMin && rectPlant.xMin < rect.xMin) {
+          plant = this.plantMap[zombieRow][i];
+          break;
+        }
+      }
+      if (!plant) {
+        cc.error("plant is null!\n");
+        return null;
+      }
+      return plant;
+    }
+    return null;
+  }
+
+  attackPlantInBouding(rect: cc.Rect, location: cc.Vec2, attack: number): void {
+    let plant = this.getBoundingPlant(rect, location);
+    if (!plant) {
+      cc.error("plant is null");
+    } else {
+      plant.getComponent("BaseInfo").HP -= Utils.caculMinusHP(
+        attack,
+        plant.getComponent("BaseInfo").defence
+      );
+      cc.log(plant.getComponent("BaseInfo").HP);
+      if (plant.getComponent("BaseInfo").HP <= 0) {
+        this.removePlant(
+          plant.getComponent("BaseInfo").row,
+          plant.getComponent("BaseInfo").column
+        );
+      }
+    }
   }
   // update (dt) {}
 }

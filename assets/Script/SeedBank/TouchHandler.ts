@@ -44,7 +44,7 @@ export default class NewClass extends cc.Component {
   }
 
   onTouchMove(e: cc.Event.EventTouch) {
-    if (!this.myNode) return;
+    if (!this.myNode || !this.myNode.active) return;
     cc.log("move");
     this.myNode.setPosition(
       this.myNode.parent.convertToNodeSpaceAR(e.getLocation())
@@ -62,7 +62,7 @@ export default class NewClass extends cc.Component {
   }
 
   onTouchEnd(e: cc.Event.EventTouch) {
-    if (!this.myNode) return;
+    if (!this.myNode || !this.myNode.active) return;
     //判断位置是否合法
     if (Utils.canPlacePlant(e.getLocation())) {
       cc.log(this.myNode.name);
