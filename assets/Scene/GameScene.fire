@@ -441,7 +441,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 22.25,
+      "width": 33.37,
       "height": 25.2
     },
     "_anchorPoint": {
@@ -493,8 +493,8 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_string": "50",
-    "_N$string": "50",
+    "_string": "500",
+    "_N$string": "500",
     "_fontSize": 20,
     "_lineHeight": 20,
     "_enableWrapText": true,
@@ -3214,6 +3214,7 @@
       "__id__": 81
     },
     "_enabled": true,
+    "ani": null,
     "_id": "ff6OGLavNPPobx58DF9D8N"
   },
   {
@@ -3600,6 +3601,9 @@
       },
       {
         "__uuid__": "1ec32029-5c3a-42e8-90f4-b445fb63fa69"
+      },
+      {
+        "__uuid__": "c0186a7e-33a7-453f-9cbe-ad3e987fb5ac"
       }
     ],
     "playOnLoad": false,
@@ -6060,6 +6064,9 @@
     },
     "PeaShooter": {
       "__uuid__": "16762224-2af1-47d6-9f8d-1be3d57fb01a"
+    },
+    "Chomper": {
+      "__uuid__": "8270e4d6-82ac-44c9-9bb9-4d421584e822"
     },
     "_id": "4e7L33KStJuI+AcUfHx/59"
   },
