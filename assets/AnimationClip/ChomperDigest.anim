@@ -1,0 +1,55 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "ChomperDigest",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 1.2,
+  "sample": 5,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "4a48116d-5862-477a-981c-026ea6e2f591"
+            }
+          },
+          {
+            "frame": 0.2,
+            "value": {
+              "__uuid__": "bd925c61-dd8a-4f12-89d3-54c4a58723bd"
+            }
+          },
+          {
+            "frame": 0.4,
+            "value": {
+              "__uuid__": "6b99e75e-d2eb-4d66-b2be-6afb327b6d02"
+            }
+          },
+          {
+            "frame": 0.6,
+            "value": {
+              "__uuid__": "5fa3c620-9815-48bd-9b2e-345005110796"
+            }
+          },
+          {
+            "frame": 0.8,
+            "value": {
+              "__uuid__": "315f55d4-6b56-4d05-8d9d-e509b268a999"
+            }
+          },
+          {
+            "frame": 1,
+            "value": {
+              "__uuid__": "bb9ab2dd-8528-4d83-96ec-865f70a47f51"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}

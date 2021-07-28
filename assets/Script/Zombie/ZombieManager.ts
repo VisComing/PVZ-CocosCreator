@@ -35,7 +35,7 @@ export default class NewClass extends cc.Component {
   removeZombie(zombie: cc.Node): void {
     for (let i = 0; i < this.zombieMap.length; i++) {
       for (let j = 0; j < this.zombieMap[i].length; j++) {
-        if (this.zombieMap[i][j] == zombie) {
+        if (this.zombieMap[i][j].uuid == zombie.uuid) {
           this.zombieMap[i].splice(j, 1);
           zombie.destroy();
           return;
@@ -44,7 +44,17 @@ export default class NewClass extends cc.Component {
     }
     cc.error("no zombie to remove!");
   }
-
+  removeZombieNotDestory(zombie: cc.Node): void {
+    for (let i = 0; i < this.zombieMap.length; i++) {
+      for (let j = 0; j < this.zombieMap[i].length; j++) {
+        if (this.zombieMap[i][j].uuid == zombie.uuid) {
+          this.zombieMap[i].splice(j, 1);
+          return;
+        }
+      }
+    }
+    cc.error("no zombie to remove!");
+  }
   /*该行是否有僵尸
    */
   hasZombieInRow(row: number): boolean {
@@ -60,8 +70,12 @@ export default class NewClass extends cc.Component {
       cc.v2((rect.xMax + rect.xMin) / 2, (rect.yMax + rect.yMin) / 2)
     );
     for (let i = 0; i < this.zombieMap[plantRow].length; i++) {
-      let rectPlant = this.zombieMap[plantRow][i].getBoundingBoxToWorld();
-      if (rectPlant.xMax > rect.xMin && rectPlant.xMin < rect.xMin) {
+      let rectZombie = this.zombieMap[plantRow][i].getBoundingBoxToWorld();
+      if (
+        rect.xMax > rectZombie.xMin &&
+        rectZombie.xMin > rect.xMin &&
+        rectZombie.xMin - rect.xMin > 20
+      ) {
         return true;
       }
     }
@@ -76,8 +90,12 @@ export default class NewClass extends cc.Component {
         cc.v2((rect.xMax + rect.xMin) / 2, (rect.yMax + rect.yMin) / 2)
       );
       for (let i = 0; i < this.zombieMap[plantRow].length; i++) {
-        let rectPlant = this.zombieMap[plantRow][i].getBoundingBoxToWorld();
-        if (rectPlant.xMax > rect.xMin && rectPlant.xMin < rect.xMin) {
+        let rectZombie = this.zombieMap[plantRow][i].getBoundingBoxToWorld();
+        if (
+          rect.xMax > rectZombie.xMin &&
+          rectZombie.xMin > rect.xMin &&
+          rectZombie.xMin - rect.xMin > 20
+        ) {
           zombie = this.zombieMap[plantRow][i];
           break;
         }
@@ -94,13 +112,13 @@ export default class NewClass extends cc.Component {
   //碰撞时攻击僵尸
   attackZombieInBounding(rect: cc.Rect, attack: number): void {
     let zombie = this.getBoundingZombie(rect);
-    zombie.getComponent("ZombieBaseInfo").HP -= Utils.caculMinusHP(
-      attack,
-      zombie.getComponent("ZombieBaseInfo").defence
-    );
-    if (zombie.getComponent("ZombieBaseInfo").HP <= 0) {
+    if (zombie.getComponent("Zombie").zombieUnderAttack(attack)) {
+      //僵尸死了
       this.removeZombie(zombie);
     }
+    // if (zombie.getComponent("ZombieBaseInfo").HP <= 0) {
+    //   this.removeZombie(zombie);
+    // }
   }
 
   /*植物前方是否有僵尸
@@ -119,16 +137,21 @@ export default class NewClass extends cc.Component {
   }
   // update (dt) {}
 
-  controlZombieState(): void {
-    for (let i = 0; i < this.zombieMap.length; i++) {
-      for (let j = 0; j < this.zombieMap[i].length; j++) {
-        let zombie = this.zombieMap[i][j];
-        if (!zombie || zombie.active) {
-          cc.error("zombie is null or is not active");
-        }
-      }
-    }
+  // controlZombieState(): void {
+  //   for (let i = 0; i < this.zombieMap.length; i++) {
+  //     for (let j = 0; j < this.zombieMap[i].length; j++) {
+  //       let zombie = this.zombieMap[i][j];
+  //       if (!zombie || zombie.active) {
+  //         cc.error("zombie is null or is not active");
+  //       }
+  //     }
+  //   }
+  // }
+  zombieBoomDie(zombie: cc.Node): void {
+    zombie.getComponent(zombie.name).zombieBoomDie();
+    this.removeZombieNotDestory(zombie);
   }
-  zombieBoomDie(zombie: cc.Node): void {}
-  zombieAteDie(zombie: cc.Node): void {}
+  zombieAteDie(zombie: cc.Node): void {
+    this.removeZombie(zombie);
+  }
 }

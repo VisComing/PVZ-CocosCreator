@@ -18,6 +18,8 @@ export default class NewClass extends cc.Component {
   PotatoMine: cc.Prefab = null;
   @property(cc.Prefab)
   PeaShooter: cc.Prefab = null;
+  @property(cc.Prefab)
+  Chomper: cc.Prefab = null;
   private plantMap: Array<Array<cc.Node>> = new Array(5);
   // LIFE-CYCLE CALLBACKS:
 
@@ -44,6 +46,8 @@ export default class NewClass extends cc.Component {
       myNode = cc.instantiate(this.PotatoMine);
     } else if (plantName == "PeaShooter") {
       myNode = cc.instantiate(this.PeaShooter);
+    } else if (plantName == "Chomper") {
+      myNode = cc.instantiate(this.Chomper);
     }
     if (!myNode) return;
     myNode.parent = this.node;
@@ -69,7 +73,7 @@ export default class NewClass extends cc.Component {
     this.plantMap[Utils.getRow(location)][Utils.getColumn(location)] = myNode;
   }
 
-  private removePlant(row: number, column: number): void {
+  removePlant(row: number, column: number): void {
     let rePlant = this.plantMap[row][column];
     if (rePlant == null) {
       cc.error("plant to remove is null");
@@ -119,7 +123,11 @@ export default class NewClass extends cc.Component {
     for (let i = 0; i < this.plantMap[zombieRow].length; i++) {
       if (!this.plantMap[zombieRow][i]) continue;
       let rectPlant = this.plantMap[zombieRow][i].getBoundingBoxToWorld();
-      if (rectPlant.xMax > rect.xMin && rectPlant.xMin < rect.xMin) {
+      if (
+        rectPlant.xMax > rect.xMin &&
+        rectPlant.xMin < rect.xMin &&
+        rect.xMin - rectPlant.xMin > 20
+      ) {
         return true;
       }
     }
@@ -135,7 +143,11 @@ export default class NewClass extends cc.Component {
       for (let i = 0; i < this.plantMap[zombieRow].length; i++) {
         if (!this.plantMap[zombieRow][i]) continue;
         let rectPlant = this.plantMap[zombieRow][i].getBoundingBoxToWorld();
-        if (rectPlant.xMax > rect.xMin && rectPlant.xMin < rect.xMin) {
+        if (
+          rectPlant.xMax > rect.xMin &&
+          rectPlant.xMin < rect.xMin &&
+          rect.xMin - rectPlant.xMin > 20
+        ) {
           plant = this.plantMap[zombieRow][i];
           break;
         }

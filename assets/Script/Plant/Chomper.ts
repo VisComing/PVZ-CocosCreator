@@ -5,54 +5,49 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 import Global from "../Global";
-import Utils from "../Utils";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class NewClass extends cc.Component {
-  @property(cc.Integer)
-  growTime: number = 10;
-
-  nowTime: number = 0;
+  @property(cc.Animation)
+  ani = null;
+  chomperState: string = "normal";
   // LIFE-CYCLE CALLBACKS:
+  digestTime: number = 0;
+  // onLoad () {}
 
-  onLoad() {
-    this.schedule(this.onTimer, 1);
-  }
-
-  start() {
-    this.nowTime = 0;
-  }
-
-  onTimer() {
-    this.nowTime++;
-    if (this.nowTime == this.growTime) {
-      const ani = this.node
-        .getChildByName("PotatoMine")
-        .getComponent(cc.Animation);
-      ani.play("PotatoMine");
-      this.unschedule(this.onTimer);
-    }
-  }
+  start() {}
 
   update(dt) {
     if (
-      this.nowTime >= this.growTime &&
+      this.chomperState == "normal" &&
       Global.getZombieManagerTS().hasZombieInBoundingBox(
         this.node.getBoundingBoxToWorld()
       )
     ) {
-      //炸死僵尸
-      Global.getZombieManagerTS().zombieBoomDie(
+      this.chomperState = "digest";
+      let ani = this.node
+        .getChildByName(this.node.name)
+        .getComponent(cc.Animation);
+      ani.stop();
+      ani.play("ChomperDigest");
+      Global.getZombieManagerTS().zombieAteDie(
         Global.getZombieManagerTS().getBoundingZombie(
           this.node.getBoundingBoxToWorld()
         )
       );
-      //删除土豆地雷
-      Global.getPlantManagerTS().removePlant(
-        this.node.getComponent("BaseInfo").row,
-        this.node.getComponent("BaseInfo").column
-      );
+    }
+    if (this.chomperState == "digest") {
+      this.digestTime++;
+      if (this.digestTime == 500) {
+        this.digestTime = 0;
+        this.chomperState = "normal";
+        let ani = this.node
+          .getChildByName(this.node.name)
+          .getComponent(cc.Animation);
+        ani.stop();
+        ani.play("Chomper");
+      }
     }
   }
 }

@@ -14,7 +14,8 @@ export default class NewClass extends cc.Component {
   @property(cc.Integer)
   cracked2HP = 1000;
   // LIFE-CYCLE CALLBACKS:
-  animation: cc.Animation = null;
+  private animation: cc.Animation = null;
+  private wallNutPlayAnimation: string = "WallNut";
   onLoad() {
     this.animation = this.node
       .getChildByName("WallNut")
@@ -25,12 +26,21 @@ export default class NewClass extends cc.Component {
 
   update(dt) {
     const nowHP = this.node.getComponent("BaseInfo").HP;
-    if (nowHP < this.cracked1HP && nowHP > this.cracked2HP) {
+    if (
+      nowHP < this.cracked1HP &&
+      nowHP > this.cracked2HP &&
+      this.wallNutPlayAnimation == "WallNut"
+    ) {
       this.animation.stop();
       this.animation.play("WallNutCracked1");
-    } else if (nowHP <= this.cracked2HP) {
+      this.wallNutPlayAnimation = "WallNutCracked1";
+    } else if (
+      nowHP <= this.cracked2HP &&
+      this.wallNutPlayAnimation == "WallNutCracked1"
+    ) {
       this.animation.stop();
       this.animation.play("WallNutCracked2");
+      this.wallNutPlayAnimation = "WallNutCracked2";
     }
   }
 }

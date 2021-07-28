@@ -1,0 +1,73 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "ChomperAttack",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 1.125,
+  "sample": 8,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "5fbfd740-4546-42ef-83e0-f2f039d3313a"
+            }
+          },
+          {
+            "frame": 0.125,
+            "value": {
+              "__uuid__": "079950ed-0143-4e3f-b5b0-97a461ffa7a8"
+            }
+          },
+          {
+            "frame": 0.25,
+            "value": {
+              "__uuid__": "e0e9bd2c-e476-4733-9c51-d1b63779a22f"
+            }
+          },
+          {
+            "frame": 0.375,
+            "value": {
+              "__uuid__": "e32e9a36-54c8-4b9f-8944-1bac908dd5c8"
+            }
+          },
+          {
+            "frame": 0.5,
+            "value": {
+              "__uuid__": "90228086-ecd6-44a2-ab79-ffc0d05ecc00"
+            }
+          },
+          {
+            "frame": 0.625,
+            "value": {
+              "__uuid__": "59727bcd-f515-4c92-b8e0-65a03cf48203"
+            }
+          },
+          {
+            "frame": 0.75,
+            "value": {
+              "__uuid__": "e7464a6a-07b1-4aa8-93f1-c3c323a02b72"
+            }
+          },
+          {
+            "frame": 0.875,
+            "value": {
+              "__uuid__": "9c95823c-4b8b-4e6f-af6b-20672caff3d3"
+            }
+          },
+          {
+            "frame": 1,
+            "value": {
+              "__uuid__": "9a3d7c9d-8791-4be4-b993-36c74ab46da6"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}
